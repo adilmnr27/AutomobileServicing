@@ -64,4 +64,8 @@ public interface BookingmanagementRestService {
 	@POST
 	public Page<BookingEto> findBookings(BookingSearchCriteriaTo searchCriteriaTo);
 
+	@Path("/booking/getAvailableSlots")
+	@POST
+	public Page<BookingEto> getAvailableSlots(BookingSearchCriteriaTo searchCriteriaTo);
+
 }

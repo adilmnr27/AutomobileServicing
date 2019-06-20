@@ -47,4 +47,14 @@ public class BookingmanagementImpl extends AbstractComponentFacade implements Bo
 		return this.ucManageBooking.deleteBooking(id);
 	}
 
+	@Override
+	public BookingEto getAvailableSlots(BookingSearchCriteriaTo criteria) {
+		return null;
+
+	}
+
+
+
+
+
 }

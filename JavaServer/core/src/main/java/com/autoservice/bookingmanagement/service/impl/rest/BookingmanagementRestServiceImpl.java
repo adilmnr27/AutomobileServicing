@@ -40,4 +40,10 @@ public class BookingmanagementRestServiceImpl implements BookingmanagementRestSe
 		return this.bookingmanagement.findBookings(searchCriteriaTo);
 	}
 
+	@Override
+	public Page<BookingEto> getAvailableSlots(BookingSearchCriteriaTo searchCriteriaTo) {
+		return null;
+	//	return this.bookingmanagement.getAvailableSlots(searchCriteriaTo);
+	}
+
 }
