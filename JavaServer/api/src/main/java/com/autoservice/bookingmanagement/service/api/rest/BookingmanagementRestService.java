@@ -1,5 +1,7 @@
 package com.autoservice.bookingmanagement.service.api.rest;
 
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -14,6 +16,8 @@ import org.springframework.data.domain.Page;
 import com.autoservice.bookingmanagement.logic.api.Bookingmanagement;
 import com.autoservice.bookingmanagement.logic.api.to.BookingEto;
 import com.autoservice.bookingmanagement.logic.api.to.BookingSearchCriteriaTo;
+import com.autoservice.timeslotmastermanagment.common.api.TimeSlotMaster;
+import com.autoservice.timeslotmastermanagment.logic.api.to.TimeSlotMasterEto;
 
 /**
  * The service interface for REST calls in order to execute the logic of
@@ -66,6 +70,6 @@ public interface BookingmanagementRestService {
 
 	@Path("/booking/getAvailableSlots")
 	@POST
-	public Page<BookingEto> getAvailableSlots(BookingSearchCriteriaTo searchCriteriaTo);
+	public Page<TimeSlotMasterEto> getAvailableSlots(BookingSearchCriteriaTo searchCriteriaTo);
 
 }

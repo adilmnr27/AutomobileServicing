@@ -9,6 +9,7 @@ import com.autoservice.bookingmanagement.logic.api.Bookingmanagement;
 import com.autoservice.bookingmanagement.logic.api.to.BookingEto;
 import com.autoservice.bookingmanagement.logic.api.to.BookingSearchCriteriaTo;
 import com.autoservice.bookingmanagement.service.api.rest.BookingmanagementRestService;
+import com.autoservice.timeslotmastermanagment.logic.api.to.TimeSlotMasterEto;
 
 /**
  * The service implementation for REST calls in order to execute the logic of
@@ -41,7 +42,8 @@ public class BookingmanagementRestServiceImpl implements BookingmanagementRestSe
 	}
 
 	@Override
-	public Page<BookingEto> getAvailableSlots(BookingSearchCriteriaTo searchCriteriaTo) {
+	public Page<TimeSlotMasterEto> getAvailableSlots(BookingSearchCriteriaTo searchCriteriaTo) {
+		getAvailableSlots(searchCriteriaTo);
 		return null;
 	//	return this.bookingmanagement.getAvailableSlots(searchCriteriaTo);
 	}

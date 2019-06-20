@@ -10,7 +10,9 @@ import com.autoservice.bookingmanagement.logic.api.to.BookingEto;
 import com.autoservice.bookingmanagement.logic.api.to.BookingSearchCriteriaTo;
 import com.autoservice.bookingmanagement.logic.api.usecase.UcFindBooking;
 import com.autoservice.bookingmanagement.logic.api.usecase.UcManageBooking;
+import com.autoservice.bookingmanagement.logic.api.usecase.UcMultipurpose;
 import com.autoservice.general.logic.base.AbstractComponentFacade;
+import com.autoservice.timeslotmastermanagment.logic.api.to.TimeSlotMasterEto;
 
 /**
  * Implementation of component interface of bookingmanagement
@@ -23,6 +25,10 @@ public class BookingmanagementImpl extends AbstractComponentFacade implements Bo
 
 	@Inject
 	private UcManageBooking ucManageBooking;
+
+	@Inject
+	private UcMultipurpose ucMultipurpose;
+
 
 	@Override
 	public BookingEto findBooking(long id) {
@@ -48,7 +54,8 @@ public class BookingmanagementImpl extends AbstractComponentFacade implements Bo
 	}
 
 	@Override
-	public BookingEto getAvailableSlots(BookingSearchCriteriaTo criteria) {
+	public Page<TimeSlotMasterEto> getAvailableSlots(BookingSearchCriteriaTo criteria) {
+		this.ucMultipurpose.getAvailableSlots(criteria);
 		return null;
 
 	}
