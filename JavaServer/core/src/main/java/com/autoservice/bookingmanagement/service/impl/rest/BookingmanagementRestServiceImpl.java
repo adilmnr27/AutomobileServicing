@@ -43,7 +43,7 @@ public class BookingmanagementRestServiceImpl implements BookingmanagementRestSe
 
 	@Override
 	public Page<TimeSlotMasterEto> getAvailableSlots(BookingSearchCriteriaTo searchCriteriaTo) {
-		getAvailableSlots(searchCriteriaTo);
+		 this.bookingmanagement.getAvailableSlots(searchCriteriaTo);
 		return null;
 	//	return this.bookingmanagement.getAvailableSlots(searchCriteriaTo);
 	}

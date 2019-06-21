@@ -1,5 +1,9 @@
 package com.autoservice.bookingmanagement.logic.impl.usecase;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.inject.Named;
 
 import org.springframework.data.domain.Page;
@@ -25,11 +29,29 @@ public class UcMultipurposeImpl extends AbstractMultipurposeUc implements UcMult
 	@Override
 	public Page<TimeSlotMasterEto> getAvailableSlots(BookingSearchCriteriaTo criteria) {
 		// TODO Auto-generated method stub
+
 		TimeSlotMasterSearchCriteriaTo criteria2 = null;
-		Page<TimeSlotMasterEntity> timeslotmasters = getTimeSlotMasterRepository().findByCriteria(criteria2);
-		Page<TimeSlotMasterEto> timeSlotMasterEtos = mapPaginatedEntityList(timeslotmasters, TimeSlotMasterEto.class);
+//		Page<TimeSlotMasterEntity> timeslotmasters = getTimeSlotMasterRepository().findByCriteria(criteria2);
+
+		// getting all the time slots from the master list
+		List<TimeSlotMasterEntity> timeSlotMasterEntityList = getTimeSlotMasterRepository().findAll();
+
+		timeSlotMasterEntityList.get(0);
+
+		// Finding the list of bookings where the date matches
 		Page<BookingEntity> bookings = getBookingRepository().findByCriteria(criteria);
-		Page<BookingEto> bookingEtos =  mapPaginatedEntityList(bookings, BookingEto.class);
+		Page<BookingEto> bookingEtos = mapPaginatedEntityList(bookings, BookingEto.class);
+		bookingEtos.getSize();
+
+		// Get the list of slot ids from bookingsList
+		List<Integer> slotIdList = bookingEtos.stream().map(BookingEto::getSlotId).collect(Collectors.toList());
+
+		// Getting the available time slots
+		List<TimeSlotMasterEntity> availableSlotsList = timeSlotMasterEntityList.stream()
+				.filter(e -> slotIdList.contains(e.getSlotId())).collect(Collectors.toList());
+
+		availableSlotsList.get(0);
+
 		return null;
 	}
 
